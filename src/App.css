@@ -22,3 +22,26 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+#hero:hover {
+  background-color: #00d1b2;
+}
+
+.editarea {
+  float: left;
+}
+
+.editarea input {
+  margin: 4px;
+  height: 20px;
+  color:#0078d7;
+}
+
+.editarea button{
+  margin:8px;
+}
+
+.editarea .editfields {
+  margin-left:12px;
+}

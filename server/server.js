@@ -1,44 +1,25 @@
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+#!/usr/bin/env node
 
-const index = require('./routes/index');
+/**
+ * Module dependencies.
+ */
 
-const app = express();
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.use('/api', index);
-app.get('*', (req, res) => {
-    res.sendFile('build/index.html', {root: root});
-});
-
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-const debug = require('debug')('react-express:server');
-const http = require('http');
+var app = require('./app');
+var debug = require('debug')('express-react:server');
+var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -53,7 +34,7 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+  var port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -107,5 +88,3 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-
-module.exports = app;
