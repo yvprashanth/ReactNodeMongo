@@ -2,7 +2,8 @@
 
  const Hero = props => {
      return (
-         <li>
+         <li onClick={() => props.onSelect(props.hero)}
+            className={props.hero === props.selectedHero ? 'selected' : ''}>
             <button className="delete-button">Delete</button>
             <div className="hero-element">
                  <div className="badge">{props.hero.id}</div>
